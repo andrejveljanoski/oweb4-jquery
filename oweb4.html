@@ -4,10 +4,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
       $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
+        $("#firstname").on("keyup", function () {
           var value = $(this).val().toLowerCase();
           $("#myTable tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            $(this).toggle(
+              $(this).children("#ime").text().toLowerCase().indexOf(value) > -1
+            );
+          });
+        });
+        $("#lastname").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function () {
+            $(this).toggle(
+              $(this).children("#prezime").text().toLowerCase().indexOf(value) >
+                -1
+            );
+          });
+        });
+        $("#email").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function () {
+            $(this).toggle(
+              $(this).children("#mejl").text().toLowerCase().indexOf(value) > -1
+            );
           });
         });
       });
@@ -35,9 +54,11 @@
     <h2>Filterable Table</h2>
     <p>
       Type something in the input field to search the table for first names,
-      last names or emails:
-    </p>git remote add origin https://github.com/andrejveljanoski/oweb4-jquery.git
-    <input id="myInput" type="text" placeholder="Search.." />
+      last names, or emails:
+    </p>
+    <input id="firstname" type="text" placeholder="Search by firstname" />
+    <input id="lastname" type="text" placeholder="Search by lastname" />
+    <input id="email" type="text" placeholder="Search by email" />
     <br /><br />
 
     <table>
@@ -50,24 +71,24 @@
       </thead>
       <tbody id="myTable">
         <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
+          <td id="ime">John</td>
+          <td id="prezime">Doe</td>
+          <td id="mejl">john@example.com</td>
         </tr>
         <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@mail.com</td>
+          <td id="ime">Mary</td>
+          <td id="prezime">Moe</td>
+          <td id="mejl">mary@mail.com</td>
         </tr>
         <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@greatstuff.com</td>
+          <td id="ime">July</td>
+          <td id="prezime">Dooley</td>
+          <td id="mejl">july@greatstuff.com</td>
         </tr>
         <tr>
-          <td>Anja</td>
-          <td>Ravendale</td>
-          <td>a_r@test.com</td>
+          <td id="ime">Anja</td>
+          <td id="prezime">Ravendale</td>
+          <td id="mejl">a_r@test.com</td>
         </tr>
       </tbody>
     </table>
